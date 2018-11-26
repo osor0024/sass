@@ -1,0 +1,74 @@
+//  _mixins.scss
+
+@mixin wm($val...) {
+    width: $val;
+    margin: 0 auto;
+}
+
+@mixin flexbgs($valu...) {
+    flex-basis: $valu;
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+@mixin web($keyword...) {
+    -webkit-box-sizing: $keyword;
+    box-sizing: $keyword;
+}
+
+@function thefunc($num) {
+    @if $num==2 {
+        @return 3.998rem * 1.6;
+    }
+
+    @else if $num==1 {
+        @return 3.998rem;
+    }
+
+    @else if $num==3 {
+        @return 6.3968rem * 2;
+    }
+}
+
+@mixin row($key) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: $key;
+    align-items: flex-start;
+}
+
+@mixin pad($someval) {
+    font-size: $font-2;
+    padding: $someval;
+}
+
+@mixin pad2($someval) {
+    font-size: $font-1;
+    padding: $someval;
+}
+
+@mixin flex () {
+    flex-direction: row;
+    align-items: flex-start;
+    @content;
+}
+
+@mixin bg($light-brown:$light-brown, $dark-brown:$dark-brown) {
+    background-color: $light-brown;
+    color: $dark-brown;
+    @content;
+}
+
+@mixin span() {
+    float: none;
+    letter-spacing: 0.25rem;
+    font-size: thefunct(1);
+    text-align: left;
+}
+
+@mixin fja($r:$r,$spar:$spar, $cent:$cent){
+      flex-direction: $r; 
+        justify-content: $spar;
+        align-items: $cent;
+    @content
+}

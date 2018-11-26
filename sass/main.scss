@@ -1,1 +1,532 @@
 // main SASS file
+@import"_variables","_mixins";
+*{
+    padding:0;
+    margin: 0;
+    @include web(border-box);
+    &:after,
+    &:before{
+    @include web(inherit);
+}}
+
+html{
+    font-size: 16px;
+    font-family: 'Josefin Sans', ‘Trebuchet MS’, Helvetica, sans-serif; /* default for whole page */
+    line-height: 1.6;
+    font-weight: 400;
+}
+h1, h2, h3, h4{
+    font-weight: 700;
+    font-family: Cardo, ‘Palatino Linotype’, ‘Book Antiqua’, Palatino, serif; /* serif for the headings */
+}
+ul{
+    list-style: none;
+}
+.bg-header{
+  @include bg($light-brown:$light-blue, $dark-brown:$dark-grey);
+    border-bottom:1rem solid $med-blue;
+    border-top:1rem solid $dark-blue;
+    position: relative;
+    &:before,
+    &:after{
+    content:"";
+    position:absolute;
+    bottom:-1rem;
+    height:1rem;
+    width:30%;
+    background-color: $dark-blue;
+}
+    &:before{
+    left:0;
+}
+    &:after{
+    right:0;
+}}
+.bg-focal{
+    @include bg($light-brown:$light-brown, $dark-brown:$dark-brown);
+}
+.bg-content1{
+    @include bg($light-brown:$white, $dark-brown:$dark-grey){
+       font-weight: 100;
+    }
+}
+.bg-content2{
+    @include bg($light-brown:$light-blue, $dark-brown:$dark-blue){
+       font-weight: 100;
+    }}
+.bg-footer{
+    @include bg($light-brown:$white, $dark-brown:$light-grey);
+}
+header{
+    @include wm(400px);
+    position: relative;
+    h1{
+    width: 100%;
+    padding: 0 2rem;
+}
+nav{
+   @include fja($r:$col,$spar:$flexs, $cent:$st){
+    width: 100%;
+    display: flex;
+  
+    }
+    padding:2rem 0;
+    a{
+      @include flexbgs(100%);
+    text-align: center;
+}}}
+
+section.focal{
+    @include wm(400px);
+}
+section {
+  .content1, 
+  .content2{
+    padding: 2rem 0;
+}}
+
+.row{
+    display: flex;
+    .col{
+    flex-basis: 100%; 
+}}
+
+footer .row{
+    @include flex{
+      flex-wrap: nowrap;
+      justify-content: space-around;
+    }
+}
+footer .row > *{
+    flex-basis: 50%;
+    padding-bottom: 2rem;
+    border-left:1px solid $dark-blue;
+    margin-bottom: 2rem;
+}
+footer .row.last-row > *{
+    flex-basis: 100%;
+}
+footer .row .col:first-child{
+    border-left: 0;
+}
+footer{
+    padding:2rem 0;
+}
+header nav{
+   a{
+    text-align: center;
+    text-decoration: none;
+    color: $dark-brown;    
+    letter-spacing: 0.25rem;
+     &:hover{
+    font-weight: 700;
+    color:$dark-brown;
+}} }
+header h1{
+    color: $dark-brown;
+    letter-spacing: 0.1rem;
+    
+    i.fa-lg{
+    display:block;
+    width: 25%;
+    float:left;
+    font-size: 7rem;
+    line-height: thefunc(3);
+    color: $light-brown;
+    ~ span{
+    float: right;
+    width: 75%;
+    font-size: function(1);
+    padding-left: 1rem;
+    text-align: right;
+}}}
+.focal{
+  h2{
+    line-height: 1.2;
+    @include pad(2rem 2rem 1rem 2rem);
+}
+  .author{
+    font-size: 1rem;
+    padding: 0.2rem 2rem 2rem;
+}}
+
+.content1 {
+  h3{
+    @include pad(0.2rem 2rem 2rem);
+    i{
+    vertical-align:middle;
+    padding-right: 2rem;
+}} 
+  p{
+    @include pad(0.5rem 2rem 2rem);
+}}
+
+.content2 {
+  h3{
+        @include pad(1rem 2rem 0.5rem);
+}
+h4{
+     @include pad(1rem 2rem 0rem);
+    
+  span[lang="sv"]:after{
+    background-image: url(../img/sv-icon.png);
+}
+span[lang="pt"]:after{
+    background-image: url(../img/pt-icon.png);
+}
+ span[lang="fr"]:after{
+    background-image: url(../img/fr-icon.png);
+}
+ span[lang="no"]:after{
+    background-image: url(../img/no-icon.png);
+}
+  span[lang="hi"]:after{
+    background-image: url(../img/hi-icon.png);
+}
+ span[lang="es"]:after{
+    background-image: url(../img/es-icon.png);
+}}
+p{
+    @include pad2(0.5rem 2rem 1rem);
+}
+li{
+    @include pad2(0.5rem 2rem);
+}
+  span[lang]{
+    position: relative;
+    
+    &:hover:after{
+    position: absolute;
+    top: -0.5rem;
+    left: 0;
+    content: attr(data-country);
+    display: block;
+    padding: 0.2rem 1rem 0.2rem 2rem;
+    font-size: 1rem;
+    line-height: 2rem;
+    height: 2rem;
+    width: auto;
+    word-break: keep-all;
+    overflow-wrap: normal;
+    overflow: hidden;
+    background-color: rgba(255,255,255,0.8);
+    background-image: url(../img/uk-icon.png);
+    background-repeat: no-repeat;
+    background-size: 1.5rem auto;
+    background-position: left center;
+}}}
+
+footer{ 
+  h4{
+     @include pad2(0.5rem 2rem);
+    @extend .fa-circle;
+    
+    &[lang=de]{
+   display:block;
+}
+   &[lang=en],
+   &[lang=ar],
+   &[lang=ru]{
+    display:none;
+}}
+ p{
+    font-size: 1rem;
+    padding: 0.5rem 2rem;
+    @extend .fa-circle;
+}
+.fa-circle{
+    color: $dark-grey;
+}}
+
+@media all and (min-width:701px) and (max-width:900px){
+    header{
+        @include wm(700px);
+        min-height: 8rem;
+        h1{
+        width: 100%;
+        color: $dark-brown;
+        i.fa-lg{
+        display:inline;
+        color: $dark-brown;
+        vertical-align:baseline;
+        float:none;
+        font-size: 4rem;
+        line-height: thefunc(2);
+        ~ span{
+        @include span();
+    }}}
+    &:before,
+    &:after{
+        width:230px;
+    }
+    nav{
+        @include fja($r:$r,$spar:$spar, $cent:$cent);
+        a{
+        flex-basis: 20%;
+        font-size: 1rem;
+        line-height: 2rem;
+        min-height: 6rem;
+        border:none;
+        border-left:1px solid $light-blue;
+        padding:1.0rem;
+        background-color: $white;
+         &:last-child{
+        border-right:1px solid $light-blue;
+    }}}}
+section.focal, 
+    section.content1,
+    section.content2,
+    footer{
+      @include wm(700px);    
+    }
+    .content2 .row{
+        @include flex{
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .col{
+        flex-basis: 50%;
+    }}
+     
+    footer .row{
+      @include flex{
+        flex-wrap: nowrap;
+        justify-content: space-around;
+      }}
+    footer .row > *{
+        flex-basis: 50%;
+    }
+    footer .row.last-row > *{
+        flex-basis: 100%;
+    }
+    section.content2{
+      h4,li{
+        font-size: $font-1;
+    }}}
+    footer .fa-circle{
+        color: $med-blue;
+    }
+    footer .row:first-child .col:last-child{
+        unicode-bidi: bidi-override;
+        direction: rtl;
+    }
+    footer h4[lang=ar]{
+       display:block;
+    }
+    footer h4[lang=de],
+    footer h4[lang=en],
+    footer h4[lang=ru]{
+        display:none;
+    }
+
+@media all and (min-width:901px) and (max-width: 1400px){
+    header{
+      @include wm(900px);
+        &:before,
+    &:after{
+        width:300px;
+    }
+    h1{
+        width: 100%;
+        color: $dark-blue;
+        i.fa-lg{
+        display:inline;
+        color: $dark-blue;
+        vertical-align:baseline;
+        float:none;
+        font-size: 4rem;
+        line-height: thefunct(2);
+         ~ span{
+        @include span();
+    }}}}
+  
+    header nav{
+        @include fja($r:$r,$spar:$spar, $cent:$cent);
+        a{
+        flex-basis: 20%;
+        font-size: 1rem;
+        line-height: 2rem;
+        min-height: 2rem;
+        border:none;
+        border-left:1px solid $light-grey; 
+        padding: 0 1.0rem;
+        margin: 1.0rem 0;
+        background-color: $white;
+    }}
+    header nav > a:first-child{
+        border-left:none;
+    }
+    section.focal, 
+    section.content1,
+    section.content2,
+    footer{
+      @include wm(900px);    
+    }
+    section.focal h2{
+       @include wm(600px);
+    }
+    section.focal p.author{
+      @include wm(600px);
+    }
+    .content1 .row,
+    .content2 .row,
+    footer .row{
+        @include row(space-around);
+    }
+    .content1 .row .col{
+         @include flexbgs(33%);
+    }
+    .content2 .row .col{
+         @include flexbgs(25%);
+    }
+    footer .row .col{
+        flex-basis: 50%;
+    }
+    footer .row.last-row{
+        justify-content: flex-start;
+    }
+    footer .row.last-row .col{
+        flex-basis: 100%;
+    }
+    section.content1 h3{
+        font-size: $font-2;
+        font-weight: 100;
+        .fa-2x{
+        font-size:$font-2;
+        padding-right: 1rem;
+    }}
+    
+    section.content2{ 
+      h4,li{
+        font-size: $font-1;
+    }}
+    section.content2 p{
+        font-size: 1rem;
+        font-weight: 400;
+    }
+    footer {
+      .fa-circle{
+        color: $light-brown;
+    }
+      h4{
+        &[lang=ru]{
+       display:block; 
+    }
+    &h4[lang=de],
+     &h4[lang=ar],
+    &h4[lang=en]{
+        display:none;
+    }}}}
+
+@media all and (min-width:1401px){
+    header{
+        @include wm(1400px);
+        &:before,
+        &:after{
+        width:450px;
+    }
+        h1{
+        width: 100%;
+        color: $dark-brown;
+        i.fa-lg{
+        display:inline;
+        color: $dark-brown;
+        vertical-align:baseline;
+        float:none;
+        font-size: 4rem;
+        line-height: thefunct(2);
+        ~ span{
+        @include span();
+    }}}
+    nav{
+        @include fja;
+        width: 100%;
+        padding: 0rem 0;
+        background-color: $white;
+    }}
+ 
+    header nav > a{
+        flex-basis: 20%;
+         @include pad2(0 1.0rem);
+        line-height: 2rem;
+        min-height: 2rem;
+        border:none;
+        border-left: 1px solid $light-grey; 
+        margin: 1rem 0;
+        background-color: $white;
+        &:first-child{
+        border-left:none;
+    }}
+    section.focal, 
+    section.content1,
+    section.content2,
+    footer{
+        @include wm(1400px);
+    }
+    .content1 .row,
+    .content2 .row,
+    footer .row{
+         @include row(space-evenly);
+    }
+    .content1 .row .col{
+         @include flexbgs(30%);
+    }
+    .content2 .row .col{
+         @include flexbgs(20%);
+    }
+    footer .row .col{
+        flex-basis: 50%;
+    }
+    footer .row.last-row{
+        justify-content: flex-start;
+        .col{
+        flex-basis: 100%;
+    }}
+    section.focal{
+      h2{
+        font-size: thefunc(1);
+        @include wm(600px);
+    }
+      p.author{
+        @include wm(600px);
+    }}
+   
+    section.content1 {
+      h3{
+        font-size: 2.827rem;
+        font-weight: 100;
+         .fa-2x{
+  
+        font-size: 2.827rem;
+        padding-right: 1rem;
+        vertical-align: middle;
+    }}}
+    section.content2 {
+      h4,li
+    {
+        font-size: $font-2;
+    }}
+ p{
+        font-size: $font-1;
+    }}
+    footer{
+     p{
+        font-size: $font-1;
+        letter-spacing: 0.2rem;
+        &:last-child{
+        color: $light-grey;
+    }}
+    .fa-circle{
+        color: $med-blue;
+    }
+    h4{
+      &[lang=en]{
+       display:block; 
+    }
+    &[lang=de],
+    &[lang=ar],
+    &[lang=ru]{
+        display:none;
+    }}}
+      
+  

@@ -23,6 +23,7 @@ ul{
     list-style: none;
 }
 .bg-header{
+    background-color: #fff;
   @include bg($light-brown:$light-blue, $dark-brown:$dark-grey);
     border-bottom:1rem solid $med-blue;
     border-top:1rem solid $dark-blue;
@@ -87,6 +88,9 @@ section {
 
 .row{
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
     .col{
     flex-basis: 100%; 
 }}
@@ -112,20 +116,25 @@ footer .row .col:first-child{
 footer{
     padding:2rem 0;
 }
-header nav{
-   a{
-    text-align: center;
+header nav > a{  
+       text-align: center;
     text-decoration: none;
-    color: $dark-brown;    
+    color: $dark-brown;   
+    font-size: $font-1;
     letter-spacing: 0.25rem;
+    border:1px solid $light-grey; 
+    border-bottom: none;
+    padding:1.0rem 2rem;
+    line-height: 1;
+    background-color: $white;
      &:hover{
     font-weight: 700;
     color:$dark-brown;
-}} }
+
+ }} 
 header h1{
     color: $dark-brown;
     letter-spacing: 0.1rem;
-    
     i.fa-lg{
     display:block;
     width: 25%;
@@ -136,7 +145,8 @@ header h1{
     ~ span{
     float: right;
     width: 75%;
-    font-size: function(1);
+        font-size: 3.998rem;
+//    font-size: function(1);
     padding-left: 1rem;
     text-align: right;
 }}}
@@ -219,7 +229,7 @@ li{
 footer{ 
   h4{
      @include pad2(0.5rem 2rem);
-    @extend .fa-circle;
+      color: $dark-brown;
     
     &[lang=de]{
    display:block;
@@ -228,12 +238,14 @@ footer{
    &[lang=ar],
    &[lang=ru]{
     display:none;
-}}
- p{
+      }}
+      p{
     font-size: 1rem;
     padding: 0.5rem 2rem;
+    color:red;
     @extend .fa-circle;
 }
+ 
 .fa-circle{
     color: $dark-grey;
 }}
